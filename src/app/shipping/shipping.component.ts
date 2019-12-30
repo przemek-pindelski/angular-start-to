@@ -15,7 +15,10 @@ export class ShippingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.shippingCosts = this.cartService.getShippingPrices();
+    this.cartService.getShippingPrices().subscribe(
+      data => {console.log('success', data ),
+                this.shippingCosts = data},
+      error => console.log('oops', error));
   }
 
 }
